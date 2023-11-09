@@ -23,3 +23,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+bootRun {
+    standardInput = System.in
+}
