@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.bedu.eshop.model.Product;
-import org.springframework.expression.spel.support.ReflectivePropertyAccessor.OptimalPropertyAccessor;
 import org.springframework.stereotype.Repository;
 
 @Repository
