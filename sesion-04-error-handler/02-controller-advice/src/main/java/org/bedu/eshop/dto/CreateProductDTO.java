@@ -5,13 +5,13 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 public class CreateProductDTO {
-    @NotBlank
+    @NotBlank(message = "El nombre del producto es obligatorio")
     private String name;
 
-    @Min(1)
+    @Min(value = 1, message = "La cantidad debe ser mayor a cero")
     private int quantity;
 
-    @DecimalMin("0.0")
+    @DecimalMin(value = "0.0", message = "El precio debe ser mayor o igual a cero")
     private double price;
 
     public String getName() {
