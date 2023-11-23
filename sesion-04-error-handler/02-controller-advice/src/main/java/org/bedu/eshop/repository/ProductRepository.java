@@ -14,7 +14,7 @@ public class ProductRepository {
     private List<Product> products;
 
     public ProductRepository() {
-        currentId = 1;
+        currentId = 0;
         products = new LinkedList<>();
     }
 
@@ -22,9 +22,7 @@ public class ProductRepository {
         return products;
     }
 
-    // Optional = Null Safe, es decir, evitamos usar "null" directamente
     public Optional<Product> getById(long id) {
-        // Version junior
         for (Product product : products) {
             if (product.getId() == id) {
                 return Optional.of(product);
@@ -32,9 +30,6 @@ public class ProductRepository {
         }
 
         return Optional.empty();
-
-        // Versión senior
-        // return products.stream().filter(x -> x.getId() == id).findFirst();
     }
 
     public Product save(Product data) {

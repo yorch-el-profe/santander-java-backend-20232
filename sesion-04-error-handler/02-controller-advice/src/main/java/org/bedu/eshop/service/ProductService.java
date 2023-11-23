@@ -2,6 +2,7 @@ package org.bedu.eshop.service;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.bedu.eshop.dto.CreateProductDTO;
 import org.bedu.eshop.dto.ProductDTO;
 import org.bedu.eshop.model.Product;
 import org.bedu.eshop.repository.ProductRepository;
@@ -24,9 +25,15 @@ public class ProductService {
         }
 
         return data;
+    }
 
-        // Versión senior
-        // return products.stream().map(x -> toDTO(x)).toList();
+    public ProductDTO save(CreateProductDTO data) {
+        Product model = toModel(data);
+        return toDTO(productRepository.save(model));
+    }
+
+    private Product toModel(CreateProductDTO dto) {
+        return new Product(0, dto.getName(), dto.getQuantity(), dto.getPrice());
     }
 
     private Product toModel(ProductDTO dto) {

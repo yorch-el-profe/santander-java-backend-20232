@@ -14,7 +14,7 @@ public class ProductRepository {
     private List<Product> products;
 
     public ProductRepository() {
-        currentId = 1;
+        currentId = 0;
         products = new LinkedList<>();
     }
 
