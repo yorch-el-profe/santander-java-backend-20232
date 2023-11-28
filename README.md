@@ -2,7 +2,7 @@
 
 ## [Sesión 01: Introducción a Spring](/sesion-01-introduccion/)
 
-Introducción a Spring Framework y Spring Boot, creación de proyectos utilizando [Spring Initializr)](https://start.spring.io/) y explicación básica sobre el funcionamiento de Spring.
+Introducción a Spring Framework y Spring Boot, creación de proyectos utilizando [Spring Initializr](https://start.spring.io/) y explicación básica sobre el funcionamiento de Spring.
 
 ## [Sesión 02: Spring Web](/sesion-02-http/)
 
