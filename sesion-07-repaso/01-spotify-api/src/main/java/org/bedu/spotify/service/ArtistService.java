@@ -27,4 +27,5 @@ public class ArtistService {
         Artist entity = repository.save(mapper.toModel(data));
         return mapper.toDTO(entity);
     }
+
 } 
