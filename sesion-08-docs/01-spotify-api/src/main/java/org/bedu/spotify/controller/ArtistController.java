@@ -7,6 +7,7 @@ import org.bedu.spotify.dto.ArtistDTO;
 import org.bedu.spotify.dto.CreateArtistDTO;
 import org.bedu.spotify.dto.SongDTO;
 import org.bedu.spotify.dto.UpdateArtistDTO;
+import org.bedu.spotify.exception.ArtistNotFoundException;
 import org.bedu.spotify.service.ArtistService;
 import org.bedu.spotify.service.InterpretationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +67,7 @@ public class ArtistController {
     @Operation(summary = "Actualiza la información de un artista")
     @PutMapping("{artistId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable long artistId, @Valid @RequestBody UpdateArtistDTO data) throws Exception {
+    public void update(@PathVariable long artistId, @Valid @RequestBody UpdateArtistDTO data) throws ArtistNotFoundException {
         service.update(artistId, data);
     }
 }

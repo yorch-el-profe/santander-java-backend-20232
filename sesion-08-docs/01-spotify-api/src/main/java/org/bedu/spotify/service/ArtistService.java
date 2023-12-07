@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.bedu.spotify.dto.ArtistDTO;
 import org.bedu.spotify.dto.CreateArtistDTO;
 import org.bedu.spotify.dto.UpdateArtistDTO;
+import org.bedu.spotify.exception.ArtistNotFoundException;
 import org.bedu.spotify.mapper.ArtistMapper;
 import org.bedu.spotify.model.Artist;
 import org.bedu.spotify.repository.ArtistRepository;
@@ -30,11 +31,11 @@ public class ArtistService {
         return mapper.toDTO(entity);
     }
 
-    public void update(long artistId, UpdateArtistDTO data) throws Exception {
+    public void update(long artistId, UpdateArtistDTO data) throws ArtistNotFoundException {
         Optional<Artist> result = repository.findById(artistId);
 
         if (!result.isPresent()) {
-            throw new Exception();
+            throw new ArtistNotFoundException(artistId);
         }
 
         Artist artist = result.get();
