@@ -6,6 +6,7 @@ import org.bedu.spotify.dto.AddSongDTO;
 import org.bedu.spotify.dto.ArtistDTO;
 import org.bedu.spotify.dto.CreateArtistDTO;
 import org.bedu.spotify.dto.SongDTO;
+import org.bedu.spotify.dto.UpdateArtistDTO;
 import org.bedu.spotify.service.ArtistService;
 import org.bedu.spotify.service.InterpretationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -59,5 +61,12 @@ public class ArtistController {
     @ResponseStatus(HttpStatus.OK)
     public List<SongDTO> findSongsByArtist(@PathVariable long artistId) {
         return interpretationService.findSongsByArtist(artistId);
+    }
+
+    @Operation(summary = "Actualiza la información de un artista")
+    @PutMapping("{artistId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void update(@PathVariable long artistId, @Valid @RequestBody UpdateArtistDTO data) throws Exception {
+        service.update(artistId, data);
     }
 }
