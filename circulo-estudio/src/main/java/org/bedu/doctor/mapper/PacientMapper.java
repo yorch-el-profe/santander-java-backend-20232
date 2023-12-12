@@ -22,7 +22,8 @@ public interface PacientMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
-    Pacient toModel(CreatePacientDTO dto);
+    @Mapping(source = "medicalRecordId", target = "medicalRecord.id")
+    Pacient toModel(CreatePacientDTO dto, Long medicalRecordId);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)

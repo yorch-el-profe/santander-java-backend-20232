@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -47,4 +49,8 @@ public class Pacient {
     @UpdateTimestamp(source = SourceType.DB)
     @Column(name = "updated_at")
     private Instant updatedAt;
+
+    @OneToOne
+    @JoinColumn(name = "medical_record_id", referencedColumnName = "id")
+    private MedicalRecord medicalRecord;
 }
