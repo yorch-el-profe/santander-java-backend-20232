@@ -46,4 +46,8 @@ public class PacientService {
 
         repository.save(model);
     }
+
+    public void deleteById(long id) {
+        repository.deleteById(id);
+    }
 }
