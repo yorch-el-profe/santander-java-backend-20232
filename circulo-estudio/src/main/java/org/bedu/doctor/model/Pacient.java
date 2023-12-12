@@ -6,15 +6,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
-import java.sql.Date;
+import java.util.Date;
 import java.time.Instant;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SourceType;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter
 @Setter
@@ -35,13 +36,15 @@ public class Pacient {
     @Column(nullable = false)
     private String nss;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false, name = "birth_date")
     private Date birthDate;
 
     @CreationTimestamp(source = SourceType.DB)
+    @Column(name = "created_at")
     private Instant createdAt;
 
     @UpdateTimestamp(source = SourceType.DB)
+    @Column(name = "updated_at")
     private Instant updatedAt;
 }

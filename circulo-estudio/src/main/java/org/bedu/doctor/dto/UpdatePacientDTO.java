@@ -1,6 +1,6 @@
 package org.bedu.doctor.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.validation.constraints.Email;
 import lombok.Data;
@@ -14,6 +14,6 @@ public class UpdatePacientDTO {
     private String email;
     
     private String nss;
-    
+
     private Date birthDate;
 }
