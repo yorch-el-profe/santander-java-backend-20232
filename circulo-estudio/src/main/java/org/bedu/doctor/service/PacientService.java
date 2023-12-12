@@ -15,6 +15,8 @@ import org.bedu.doctor.repository.PacientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class PacientService {
     
@@ -32,11 +34,13 @@ public class PacientService {
         return mapper.toDTO(data);
     }
 
+    @Transactional
     public PacientDTO save(CreatePacientDTO data) {
 
         MedicalRecordDTO medicalRecord = medicalRecordService.save();
 
         Pacient model = mapper.toModel(data, medicalRecord.getId());
+
         Pacient result = repository.save(model);
         
         return mapper.toDTO(result);
